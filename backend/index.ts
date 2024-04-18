@@ -7,9 +7,10 @@ const cors = require('cors');
 app.use(cors());
 
 const PORT = process.env.PORT;
+const FRONTEND_PORT = process.env.FRONTEND_PORT;
 const server = http.createServer(app);
 const io = new Server(server, {
-    cors: {origin:`http://localhost:3000`, methods: ["GET", "POST"]},
+    cors: {origin:`http://localhost:${FRONTEND_PORT}`, methods: ["GET", "POST"]},
 });
 
 io.on("connection", (socket: any) => {
